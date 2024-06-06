@@ -11,34 +11,15 @@
     <button id="sendDataButton">Send Data to Bot</button>
 
     <script>
-        // Check if the Telegram Web App is initialized
-        if (window.Telegram.WebApp) {
-            const tg = window.Telegram.WebApp;
+       const tg = window.Telegram.WebApp;
 
-            // Log the initData for debugging purposes
-            console.log("initData:", tg.initData);
-            console.log("initDataUnsafe:", tg.initDataUnsafe);
-
-            // Validate initData before using it
-            // Assuming you have a function validateInitData to perform the validation
-            const isValidData = validateInitData(tg.initData);
-            if (!isValidData) {
-                console.error("Invalid initData");
-                // Handle invalid data appropriately
-            }
-
-            // Setup a click event listener to send data
-            document.getElementById("sendDataButton").addEventListener("click", () => {
-                const data = JSON.stringify({ message: "Hello, Bot!" });
-                tg.sendData(data);  // This sends the data to the bot and closes the Mini App
-            });
-
-            // Inform Telegram that the Mini App is ready
-            tg.ready();
-        } else {
-            console.error("Telegram Web App is not available");
-        }
-
+       tg.switchInlineQueryMode('query', ['bot']);
+// Setup a click event listener to send data
+document.getElementById("sendDataButton").addEventListener("click", () => {
+    const data = JSON.stringify({ message: "Hello, Bot!" });
+   
+    tg.sendData(data);  // This sends the data to the bot and closes the Mini App
+});
         // Function to validate initData
         function validateInitData(data) {
             // Implement your validation logic here
