@@ -11,21 +11,23 @@
     <button id="sendDataButton">Send Data to Bot</button>
 
     <script>
-       const tg = window.Telegram.WebApp;
-       tg.switchInlineQuery('query', ['bot']);
+        // Initialize Telegram WebApp API
+        const tg = window.Telegram.WebApp;
 
-// Setup a click event listener to send data
-document.getElementById("sendDataButton").addEventListener("click", () => {
-    const data = JSON.stringify({ message: "Hello, Bot!" });
-   
-    tg.sendData(data);  // This sends the data to the bot and closes the Mini App
-});
-        // Function to validate initData
+        // Setup a click event listener to send data
+        document.getElementById("sendDataButton").addEventListener("click", () => {
+            const data = JSON.stringify({ message: "Hello, Bot!" });
+            tg.sendData(data);  // Sends the data to the bot and closes the Mini App
+        });
+
+        // Optional: Function to validate initData (not used in this example)
         function validateInitData(data) {
             // Implement your validation logic here
-            // This is a simple example, adjust as needed for your use case
             return typeof data === "string" && data.length > 0;
         }
+
+        // Optional: Automatically open the Mini App in expanded mode (not used in this example)
+        // tg.expand();
     </script>
 </body>
 </html>
