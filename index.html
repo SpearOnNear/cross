@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Telegram Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Share Your Feedback</h1>
+
+        <label for="feedback">Your Feedback:</label>
+        <textarea id="feedback"></textarea>
+
+        <button id="sendButton">Send to Bot</button>
+
+        <div id="statusMessage"></div> 
+    </div>
+
+    <script>
+        document.getElementById('sendButton').addEventListener('click', function() {
+            const feedbackText = document.getElementById('feedback').value;
+
+            if (feedbackText.trim() === '') { // Basic validation
+                document.getElementById('statusMessage').textContent = "Please enter your feedback.";
+                return;
+            }
+
+            window.Telegram.WebApp.sendData(feedbackText);
+            document.getElementById('statusMessage').textContent = "Feedback sent successfully!";
+            document.getElementById('feedback').value = ""; // Clear the textarea
+        });
+    </script>
+
+</body>
+</html>
