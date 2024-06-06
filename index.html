@@ -12,8 +12,8 @@
 
     <script>
        const tg = window.Telegram.WebApp;
+       tg.switchInlineQuery('query', ['bot']);
 
-       tg.switchInlineQueryMode('query', ['bot']);
 // Setup a click event listener to send data
 document.getElementById("sendDataButton").addEventListener("click", () => {
     const data = JSON.stringify({ message: "Hello, Bot!" });
